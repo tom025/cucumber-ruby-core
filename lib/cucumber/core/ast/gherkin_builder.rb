@@ -290,7 +290,7 @@ module Cucumber
 
           class StepBuilder < Builder
             def result(language)
-              step = ScenarioOutline::Step.new(
+              step = OutlineStep.new(
                 language,
                 location,
                 node.keyword,
