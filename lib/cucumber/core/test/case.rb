@@ -23,6 +23,10 @@ module Cucumber
           self
         end
 
+        def with_steps(new_test_steps)
+          Test::Case.new(new_test_steps, source)
+        end
+
       end
     end
   end

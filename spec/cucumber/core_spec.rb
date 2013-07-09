@@ -52,7 +52,25 @@ module Cucumber
 
     end
 
-    describe "executing a test suite" do
+    describe "mapping test cases" do
+      it "foo" do
+        gherkin = gherkin do
+          feature do
+            scenario do
+              step
+            end
+          end
+        end
+        runner = double('runner')
+        mappings = double('mappings')
+        runner.should_receive(:test_case)
+        runner.should_receive(:mapped_step).once
+        map([gherkin], mappings, runner)
+      end
+
+    end
+
+    describe "executing test_cases" do
       class ReportSpy
         attr_reader :test_cases, :test_steps
 

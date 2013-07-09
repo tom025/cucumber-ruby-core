@@ -22,15 +22,28 @@ module Cucumber
           end
         end
 
-        def execute(mappings)
-          mappings.execute(step)
-          Result::Passed.new(self)
-        rescue Exception => exception
-          Result::Failed.new(self, exception)
+        def to_mapped_step(mappings)
+          MappedStep.new(mappings, source)
         end
 
         def step
           source.last
+        end
+
+        class MappedStep
+          include Cucumber.initializer(:mappings, :source)
+
+          def execute(mappings)
+            mappings.execute(step)
+            Result::Passed.new(self)
+          rescue Exception => exception
+            Result::Failed.new(self, exception)
+          end
+
+          def describe_to(visitor, *args)
+            visitor.test_step(self, *args)
+          end
+
         end
 
       end
