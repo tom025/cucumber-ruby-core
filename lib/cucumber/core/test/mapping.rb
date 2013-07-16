@@ -21,6 +21,9 @@ module Cucumber
           Result::Failed.new(exception)
         end
 
+        def describe_to(visitor, *args)
+        end
+
       end
 
       class UndefinedMapping

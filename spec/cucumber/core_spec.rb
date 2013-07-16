@@ -82,6 +82,10 @@ module Cucumber
           mapper.define {}                if step.name =~ /pass/
           self
         end
+
+        def hooks(test_case, mapper)
+          mapper.before { raise Failure }
+        end
       end
 
       it "executes the test cases in the suite" do
@@ -103,6 +107,8 @@ module Cucumber
         mappings = FakeMappings.new
 
         execute [gherkin], mappings, report
+
+        p report.test_cases.exceptions
 
         report.test_cases.total.should eq(2)
         report.test_cases.total_passed.should eq(1)

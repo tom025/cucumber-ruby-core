@@ -26,7 +26,6 @@ module Cucumber
             mappings.define(test_step, mapper)
             test_steps << mapper.mapped_test_step
           end
-
         end
 
         class StepMapper

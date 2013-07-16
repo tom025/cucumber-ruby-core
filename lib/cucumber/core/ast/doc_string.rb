@@ -51,6 +51,18 @@ module Cucumber
           content == other.content && content_type == other.content_type
         end
 
+        def encoding
+          @content.encoding
+        end
+
+        def to_str
+          @content
+        end
+
+        def gsub(*args)
+          @content.gsub(*args)
+        end
+
         private
 
         def description_for_visitors
