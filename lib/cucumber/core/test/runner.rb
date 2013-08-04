@@ -54,6 +54,9 @@ module Cucumber
             end
 
             def undefined(result)
+              # TODO Hmmm. The result object here does not have an exception on it, 
+              # but we need one for the Failed result we'll use for the Test::Case.
+              # Should we artificially create an exception here, or in the mapping?
               failed
             end
 

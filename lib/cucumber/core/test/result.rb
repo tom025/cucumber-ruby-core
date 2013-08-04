@@ -21,7 +21,6 @@ module Cucumber
           def describe_to(visitor, *args)
             self
           end
-
         end
 
         class Passed
@@ -40,12 +39,6 @@ module Cucumber
             self
           end
 
-          def execute(test_step, test_case_runner)
-            result = test_step.execute
-            test_case_runner.test_case_result = result if result != self
-            result
-          end
-
           def to_s
             "✓"
           end
@@ -57,7 +50,8 @@ module Cucumber
           attr_reader :duration, :exception
 
           def initialize(duration, exception)
-            raise ArgumentError unless duration && exception
+            raise ArgumentError unless duration 
+            raise ArgumentError unless exception
             super
           end
 
