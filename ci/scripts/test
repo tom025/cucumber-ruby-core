@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e -x
+
+unset BUNDLE_APP_CONFIG
+
+cd cucumber-core
+
+ruby --version
+bundle install -j8 --path ../vendor/cache
+bundle exec rake

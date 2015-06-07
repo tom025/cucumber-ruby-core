@@ -3,7 +3,10 @@ require 'kramdown'
 
 describe "README.md code snippet" do
   let(:code_blocks) do
-    markdown = File.read(File.expand_path(File.dirname(__FILE__) + '/../README.md'))
+    markdown = File.read(
+      File.expand_path(File.dirname(__FILE__) + '/../README.md'),
+      encoding: 'UTF-8'
+    )
     parse_ruby_from(markdown)
   end
 
